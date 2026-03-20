@@ -1,4 +1,4 @@
-package main
+package src
 
 type Persona struct {
 	Nombre string
