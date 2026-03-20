@@ -1,11 +1,14 @@
 package main
 
-import (
-	"fmt"
-	"math/rand"
-)
+type Persona struct {
+	Nombre string
+	Edad   int
+}
+
+func (p Persona) Saludar() string {
+	return "Hola, soy " + p.Nombre
+}
 
 func main() {
-	fmt.Println("We are backkkkkkk")
-	fmt.Println("My favourite number is", rand.Intn(10))
+	p = Persona{Nombre: "Aylén", Edad: 20}
 }
