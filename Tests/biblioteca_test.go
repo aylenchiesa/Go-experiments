@@ -1,7 +1,7 @@
 package tests
 
 import (
-	src "Go-experiments/src"
+	"Go-experiments/src"
 	"testing"
 )
 
