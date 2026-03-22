@@ -7,7 +7,7 @@ import (
 
 func TestPrestarLibro(t *testing.T) {
 	b := src.Biblioteca{
-		Libros: []src.Libro{
+		Libros: []src.Book{
 			{Titulo: "El Diario de Anne Frank", Autor: "Autor", Disponible: true},
 		},
 	}

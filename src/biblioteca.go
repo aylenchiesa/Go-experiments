@@ -1,10 +1,10 @@
 package src
 
 type Biblioteca struct {
-	Libros []Libro
+	Libros []Book
 }
 
-func (b *Biblioteca) BuscarLibro(titulo string) *Libro {
+func (b *Biblioteca) BuscarLibro(titulo string) *Book {
 	for i := range b.Libros {
 		switch b.Libros[i].Titulo == titulo {
 		case true:

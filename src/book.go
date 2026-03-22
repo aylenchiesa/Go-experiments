@@ -1,18 +1,18 @@
 package src
 
-type Libro struct {
+type Book struct {
 	ID         int
 	Titulo     string
 	Autor      string
 	Disponible bool
 }
 
-func (l *Libro) Prestar() bool {
+func (l *Book) Prestar() bool {
 	ok := l.Disponible
 	l.Disponible = false
 	return ok
 }
 
-func (l *Libro) Devolver() {
+func (l *Book) Devolver() {
 	l.Disponible = true
 }
