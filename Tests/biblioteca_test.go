@@ -6,18 +6,18 @@ import (
 )
 
 func TestPrestarLibro(t *testing.T) {
-	b := src.Biblioteca{
+	b := src.Biblioteca{ //creo objeto biblioteca
 		Libros: []src.Book{
 			{Titulo: "El Diario de Anne Frank", Autor: "Autor", Disponible: true},
 		},
 	}
 
-	u := src.Usuario{
+	u := src.Usuario{ //creo objeto usuario
 		Nombre:              "Aylén",
 		MaxLibrosPermitidos: 2,
 	}
 
-	ok := b.PrestarLibro(&u, "El Diario de Anne Frank")
+	ok := b.PrestarLibro(&u, "El Diario de Anne Frank") //llamo al metodo prestarlibro
 
 	if !ok {
 		t.Errorf("Deberia poder prestar el libro")
