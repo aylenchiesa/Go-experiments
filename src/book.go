@@ -1,8 +1,7 @@
 package src
 
 type Book struct {
-	ID         int
-	Titulo     string
+	Item       //composicionnnnn
 	Autor      string
 	Disponible bool
 }
