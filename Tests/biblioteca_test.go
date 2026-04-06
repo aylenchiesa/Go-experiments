@@ -104,3 +104,35 @@ func TestMaximoLibrosPedidos(t *testing.T) {
 		t.Errorf("La cantidad de libros prestados no debería cambiar")
 	}
 }
+
+func TestDisponibilidad(t *testing.T) {
+    // creamos la biblioteca directamente con sus items o sea libros cargados.
+    biblioteca := src.Biblioteca{
+        Items: []src.IPrestable{
+            &src.Book{Item: src.Item{ID: 1, Titulo: "El Principito"}, 
+														Autor: "Saint-Exupéry", 
+														Disponible: true,
+										 }, 
+            &src.Book{Item: src.Item{ID: 2, Titulo: "Rayuela"}, Autor: "Julio Cortázar", Disponible: false},
+										 
+        },
+			}
+
+		usuario := &src.Usuario{
+		Nombre: "Aylén", 
+		LibrosPrestados: 0, 
+		MaxLibrosPermitidos: 2,
+    }
+
+		libro := biblioteca.Items[0].(*src.Book)
+
+		if !libro.Disponible {
+			t.Errorf("El Principito debería estar disponible")
+		}
+
+		ok := biblioteca.Prestar(usuario, "El Principito") //  presto
+
+		if !ok {
+        t.Errorf("Debería haber podido prestar 'El Principito' porque estaba en la lista y disponible")
+    }
+}
