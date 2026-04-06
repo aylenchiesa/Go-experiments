@@ -16,3 +16,9 @@ func (t *Tesis) Prestar() bool {
 func (t *Tesis) Devolver() {
 	t.Disponible = true
 }
+
+func (t *Tesis) EstaDisponible() bool {
+	return t.Disponible
+}
+
+

@@ -30,19 +30,28 @@ func TestPrestarLibro(t *testing.T) {
 }
 
 func TestDevolverTesis(t *testing.T) {
-	// creamos una tesis disponible
-	tesis := src.Tesis{
-		Item: src.Item{
-			ID:     1,
-			Titulo: "Inteligencia Artificial",
+	
+		b := src.Biblioteca{
+			Items: []src.IPrestable{
+				&src.Tesis{
+			Item: src.Item{
+				ID:     1,
+				Titulo: "Inteligencia Artificial",
+			},
+			Autor:      "Aylén",
+			Area:       "Informática",
+			Disponible: true,
 		},
-		Autor:      "Aylén",
-		Area:       "Informática",
-		Disponible: true,
-	}
+	},
+}
+
+	u := src.Usuario{
+			Nombre:              "Martu",
+			MaxLibrosPermitidos: 2,
+		}
 
 	// prestamos la tesis
-	ok := tesis.Prestar()
+	ok := b.Prestar(&u, "Tesis IA")
 
 	if !ok {
 		t.Errorf("La tesis debería poder prestarse")
@@ -60,7 +69,7 @@ func TestDevolverTesis(t *testing.T) {
 	}
 }
 
-func TestNoPrestarLibroPorLimiteUsuario(t *testing.T) {
+func TestMaximoLibrosPedidos(t *testing.T) {
 
 	b := src.Biblioteca{ // creo biblioteca
 		Items: []src.IPrestable{
@@ -79,6 +88,10 @@ func TestNoPrestarLibroPorLimiteUsuario(t *testing.T) {
 		Nombre:              "Aylén",
 		LibrosPrestados:     2,
 		MaxLibrosPermitidos: 2,
+	}
+
+	if u.PuedePedirLibro() {
+		t.Errorf("El usuario NO debería poder pedir más libros")
 	}
 
 	ok := b.PrestarLibro(&u, "El Diario de Anne Frank") // intento prestar

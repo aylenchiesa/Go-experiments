@@ -4,7 +4,7 @@ type Biblioteca struct {
 	Items []IPrestable
 }
 
-func (b *Biblioteca) PrestarLibro(u *Usuario, titulo string) bool {
+func (b *Biblioteca) Prestar(u *Usuario, titulo string) bool {
 
 	for _, item := range b.Items {
 
