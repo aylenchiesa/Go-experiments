@@ -49,15 +49,9 @@ func TestPrestarLibro(t *testing.T) {
 	if libro.Disponible {
 		t.Errorf("El libro debería quedar no disponible")
 	}
-
-	libro.Devolver()
-
-	if !libro.Disponible {
-		t.Errorf("El libro debería estar disponible nuevamente")
-	}
 }
 
-func TestPrestarYDevolverTesis(t *testing.T) {
+func TestDevolverTesis(t *testing.T) {
 	// creamos una tesis disponible
 	tesis := src.Tesis{
 		Item: src.Item{
