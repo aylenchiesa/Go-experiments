@@ -63,7 +63,7 @@ func TestDevolverTesis(t *testing.T) {
 	}
 
 	// devolvemos la tesis
-	okDevolucion := b.Devolver(&u, "Tesis IA")
+	okDevolucion := b.Devolver(&u, "Inteligencia Artificial en la Generacion Z")
 
   if !okDevolucion {
         t.Errorf("La devolución debería ser exitosa")
