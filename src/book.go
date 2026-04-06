@@ -15,3 +15,7 @@ func (l *Book) Prestar() bool {
 func (l *Book) Devolver() {
 	l.Disponible = true
 }
+
+func (t *Book) EstaDisponible() bool {
+	return t.Disponible
+}

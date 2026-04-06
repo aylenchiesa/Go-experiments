@@ -94,7 +94,7 @@ func TestMaximoLibrosPedidos(t *testing.T) {
 		t.Errorf("El usuario NO debería poder pedir más libros")
 	}
 
-	ok := b.PrestarLibro(&u, "El Diario de Anne Frank") // intento prestar
+	ok := b.Prestar(&u, "El Diario de Anne Frank") // intento prestar
 
 	if ok {
 		t.Errorf("No debería poder prestar más libros porque alcanzó el límite")
