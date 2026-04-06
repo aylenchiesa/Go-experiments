@@ -126,7 +126,7 @@ func TestDisponibilidad(t *testing.T) {
 
 		libro := biblioteca.Items[0].(*src.Book)
 
-		if !libro.Disponible {
+		if !libro.EstaDisponible() {
 			t.Errorf("El Principito debería estar disponible")
 		}
 
