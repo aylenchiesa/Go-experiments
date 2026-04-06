@@ -5,33 +5,9 @@ import (
 	"testing"
 )
 
-/*
-func TestPrestarLibro(t *testing.T) {
-	b := src.Biblioteca{ //creo objeto biblioteca
-		Libros: []src.Book{
-			{Titulo: "El Diario de Anne Frank", Autor: "Autor", Disponible: true},
-		},
-	}
-
-	u := src.Usuario{ //creo objeto usuario
-		Nombre:              "Aylén",
-		MaxLibrosPermitidos: 2,
-	}
-
-	ok := b.PrestarLibro(&u, "El Diario de Anne Frank") //llamo al metodo prestarlibro
-
-	if !ok {
-		t.Errorf("Deberia poder prestar el libro")
-	}
-
-	if u.LibrosPrestados != 1 {
-		t.Errorf("El usuario debería tener 1 libro prestado")
-	}
-}*/
-
 func TestPrestarLibro(t *testing.T) {
 
-	libro := src.Book{
+	book := src.Book{
 		Item: src.Item{
 			ID:     1,
 			Titulo: "Go Básico",
@@ -40,15 +16,17 @@ func TestPrestarLibro(t *testing.T) {
 		Disponible: true,
 	}
 
-	ok := libro.Prestar()
+	ok := book.Prestar()
 
 	if !ok {
 		t.Errorf("El libro debería poder prestarse")
 	}
 
-	if libro.Disponible {
+	if book.Disponible {
 		t.Errorf("El libro debería quedar no disponible")
 	}
+	book.Devolver()
+
 }
 
 func TestDevolverTesis(t *testing.T) {
