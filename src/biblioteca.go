@@ -28,3 +28,15 @@ func (b *Biblioteca) Prestar(u *Usuario, titulo string) bool {
 
 	return false
 }
+
+func (b *Biblioteca) Devolver(u *Usuario, titulo string) bool {
+    for _, item := range b.Items {
+        
+        if item.EstaDisponible() == false {  // lógica de comparación de títulos
+            item.Devolver() // 
+            u.LibrosPrestados-- // decrementa el contador de libros prestados del usuario
+            return true
+        }
+    }
+    return false
+}

@@ -33,14 +33,13 @@ func TestDevolverTesis(t *testing.T) {
 	
 		b := src.Biblioteca{
 			Items: []src.IPrestable{
-				&src.Tesis{
-			Item: src.Item{
-				ID:     1,
-				Titulo: "Inteligencia Artificial",
-			},
-			Autor:      "Aylén",
-			Area:       "Informática",
-			Disponible: true,
+				&src.Tesis{Item: src.Item{
+									ID:     1,
+									Titulo: "Inteligencia Artificial",
+					},
+					Autor:      "Aylén",
+					Area:       "Informática",
+					Disponible: true,
 		},
 	},
 }
@@ -50,6 +49,8 @@ func TestDevolverTesis(t *testing.T) {
 			MaxLibrosPermitidos: 2,
 		}
 
+	tesis := b.Items[0].(*src.Tesis)
+	
 	// prestamos la tesis
 	ok := b.Prestar(&u, "Tesis IA")
 
@@ -57,14 +58,17 @@ func TestDevolverTesis(t *testing.T) {
 		t.Errorf("La tesis debería poder prestarse")
 	}
 
-	tesis := b.Items[0].(*src.Tesis)
 
 	if tesis.Disponible {
 		t.Errorf("La tesis debería quedar no disponible después de prestarla")
 	}
 
 	// devolvemos la tesis
-	tesis.Devolver()
+	okDevolucion := b.Devolver(&u, "Tesis IA")
+
+  if !okDevolucion {
+        t.Errorf("La devolución debería ser exitosa")
+  }
 
 	if !tesis.Disponible {
 		t.Errorf("La tesis debería estar disponible después de devolverla")
