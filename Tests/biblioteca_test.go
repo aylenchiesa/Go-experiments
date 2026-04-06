@@ -29,7 +29,7 @@ func TestPrestarLibro(t *testing.T) {
 	}
 }*/
 
-func TestPrestarYDevolverLibro(t *testing.T) {
+func TestPrestarLibro(t *testing.T) {
 
 	libro := src.Book{
 		Item: src.Item{
