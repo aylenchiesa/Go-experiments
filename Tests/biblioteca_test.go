@@ -35,7 +35,7 @@ func TestDevolverTesis(t *testing.T) {
 			Items: []src.IPrestable{
 				&src.Tesis{Item: src.Item{
 									ID:     1,
-									Titulo: "Inteligencia Artificial",
+									Titulo: "Inteligencia Artificial en la Generacion Z",
 					},
 					Autor:      "Aylén",
 					Area:       "Informática",
@@ -52,12 +52,11 @@ func TestDevolverTesis(t *testing.T) {
 	tesis := b.Items[0].(*src.Tesis)
 	
 	// prestamos la tesis
-	ok := b.Prestar(&u, "Tesis IA")
+	ok := b.Prestar(&u, "Inteligencia Artificial en la Generacion Z")
 
 	if !ok {
 		t.Errorf("La tesis debería poder prestarse")
 	}
-
 
 	if tesis.Disponible {
 		t.Errorf("La tesis debería quedar no disponible después de prestarla")
