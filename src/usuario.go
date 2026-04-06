@@ -13,3 +13,4 @@ func (u *Usuario) PuedePedirLibro() bool {
 func (u *Usuario) PedirLibro() {
 	u.LibrosPrestados++
 }
+

@@ -1,34 +1,30 @@
 package src
 
 type Biblioteca struct {
-	Libros []Book
-}
-
-func (b *Biblioteca) BuscarLibro(titulo string) *Book {
-	for i := range b.Libros {
-		switch b.Libros[i].Titulo == titulo {
-		case true:
-			return &b.Libros[i]
-		}
-	}
-	return nil
+	Items []IPrestable
 }
 
 func (b *Biblioteca) PrestarLibro(u *Usuario, titulo string) bool {
 
-	libro := b.BuscarLibro(titulo)
+	for _, item := range b.Items {
 
-	switch {
-	case libro == nil:
-		return false
-	case !libro.Disponible:
-		return false
-	case !u.PuedePedirLibro():
-		return false
+		switch i := item.(type) {
+
+		case *Book:
+			if i.Titulo == titulo && i.Disponible && u.PuedePedirLibro() {
+				i.Prestar()
+				u.PedirLibro()
+				return true
+			}
+
+		case *Tesis:
+			if i.Titulo == titulo && i.Disponible && u.PuedePedirLibro() {
+				i.Prestar()
+				u.PedirLibro()
+				return true
+			}
+		}
 	}
 
-	libro.Prestar()
-	u.PedirLibro()
-
-	return true
+	return false
 }
