@@ -126,7 +126,7 @@ func TestDisponibilidad(t *testing.T) {
 		MaxLibrosPermitidos: 2,
     }
 
-		item := biblioteca.Items[0]
+		item := biblioteca.Items[0] // El Principito que está en la posicion 0
 
 		if !item.EstaDisponible() {
 			t.Errorf("El Principito debería estar disponible")
@@ -137,4 +137,20 @@ func TestDisponibilidad(t *testing.T) {
 		if !ok {
         t.Errorf("Debería haber podido prestar 'El Principito' porque estaba en la lista y disponible")
     }
+
+		if item.EstaDisponible() {
+        t.Errorf("ERROR: El Principito ahora figura como NO disponible")
+    }
+
+		item2 := biblioteca.Items[1] // Rayuela que está en la posicion 1
+
+		if item2.EstaDisponible() {
+			t.Errorf("Rayuela debería estar NO disponible")
+		}
+
+		ok2 := biblioteca.Prestar(usuario, "Rayuela") // intento prestar Rayuela
+
+		if ok2 {
+				t.Errorf("No debería haber podido prestar 'Rayuela' porque no está disponible")
+		}
 }
