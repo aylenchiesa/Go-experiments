@@ -7,11 +7,11 @@ type Tesis struct {
 	Disponible bool
 }
 
-/*func (t *Tesis) Prestar() bool {
+func (t *Tesis) Prestar() bool {
 	ok := t.Disponible
 	t.Disponible = false
 	return ok
-}*/
+}
 
 func (t *Tesis) Devolver() {
 	t.Disponible = true
