@@ -57,6 +57,8 @@ func TestDevolverTesis(t *testing.T) {
 		t.Errorf("La tesis debería poder prestarse")
 	}
 
+	tesis := b.Items[0].(*src.Tesis)
+
 	if tesis.Disponible {
 		t.Errorf("La tesis debería quedar no disponible después de prestarla")
 	}
